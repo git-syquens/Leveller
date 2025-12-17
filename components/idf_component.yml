@@ -1,0 +1,24 @@
+## IDF Component Manager Dependencies for Leveller Project
+
+dependencies:
+  # MPU6050 6-axis gyro/accelerometer library
+  mpu6050:
+    git: https://github.com/UncleRus/esp-idf-lib.git
+    path: components/mpu6050
+
+  # I2C LCD library for HD44780-compatible displays
+  hd44780:
+    git: https://github.com/UncleRus/esp-idf-lib.git
+    path: components/hd44780
+
+  # I2C device library (dependency for LCD)
+  i2cdev:
+    git: https://github.com/UncleRus/esp-idf-lib.git
+    path: components/i2cdev
+
+  # LED strip library for WS2812B
+  led_strip:
+    version: "^2.5.0"
+
+  idf:
+    version: ">=5.1.0"
