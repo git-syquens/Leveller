@@ -1,0 +1,2 @@
+source E:/Dev/Leveller/build-esp32/gdbinit/symbols
+source E:/Dev/Leveller/build-esp32/gdbinit/connect

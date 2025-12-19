@@ -1,7 +1,7 @@
 {
     "version":            "1.2",
     "project_name":       "leveller",
-    "project_version":    "2f70a62-dirty",
+    "project_version":    "7aca573-dirty",
     "project_path":       "E:/Dev/Leveller",
     "idf_path":           "E:/Dev/Espressif/frameworks/esp-idf-v5.5",
     "build_dir":          "E:/Dev/Leveller",
@@ -1300,7 +1300,7 @@
             "managed_reqs": [],
             "managed_priv_reqs": [],
             "file": "E:/Dev/Leveller/esp-idf/main/libmain.a",
-            "sources": [ "E:/Dev/Leveller/main/main.c" ],
+            "sources": [ "E:/Dev/Leveller/main/main.c", "E:/Dev/Leveller/main/demo.c" ],
             "include_dirs": []
         },
         "mbedtls": {

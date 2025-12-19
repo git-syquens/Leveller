@@ -1,6 +1,7 @@
 {
   "permissions": {
     "allow": [
+      "Bash(*)",
       "Bash(wmic:*)",
       "Bash(curl:*)",
       "Bash(gh repo create:*)",
@@ -17,7 +18,8 @@
       "Bash(git remote:*)",
       "Bash(idf.py fullclean:*)",
       "Bash(cmd /c \"rmdir /s /q build\")",
-      "Bash(/e/Dev/Espressif/frameworks/esp-idf-v5.5/tools/tools/cmake/3.30.2/bin/cmake.exe:*)"
+      "Bash(/e/Dev/Espressif/frameworks/esp-idf-v5.5/tools/tools/cmake/3.30.2/bin/cmake.exe:*)",
+      "Bash(idf.py build:*)"
     ]
   }
 }

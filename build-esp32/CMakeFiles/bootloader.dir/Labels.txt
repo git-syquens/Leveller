@@ -1,0 +1,13 @@
+# Target labels
+ bootloader
+# Source files and their labels
+E:/Dev/Leveller/build-esp32/CMakeFiles/bootloader
+E:/Dev/Leveller/build-esp32/CMakeFiles/bootloader.rule
+E:/Dev/Leveller/build-esp32/CMakeFiles/bootloader-complete.rule
+E:/Dev/Leveller/build-esp32/bootloader-prefix/src/bootloader-stamp/bootloader-build.rule
+E:/Dev/Leveller/build-esp32/bootloader-prefix/src/bootloader-stamp/bootloader-configure.rule
+E:/Dev/Leveller/build-esp32/bootloader-prefix/src/bootloader-stamp/bootloader-download.rule
+E:/Dev/Leveller/build-esp32/bootloader-prefix/src/bootloader-stamp/bootloader-install.rule
+E:/Dev/Leveller/build-esp32/bootloader-prefix/src/bootloader-stamp/bootloader-mkdir.rule
+E:/Dev/Leveller/build-esp32/bootloader-prefix/src/bootloader-stamp/bootloader-patch.rule
+E:/Dev/Leveller/build-esp32/bootloader-prefix/src/bootloader-stamp/bootloader-update.rule

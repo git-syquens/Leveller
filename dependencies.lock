@@ -53,5 +53,5 @@ direct_dependencies:
 - idf
 - mpu6050
 manifest_hash: 6fcfb122da51450fae6c4b7081b2570636330361924738ecb2d3b0ae5e1dbb28
-target: esp32c6
+target: esp32
 version: 2.0.0
