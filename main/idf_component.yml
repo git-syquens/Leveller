@@ -1,0 +1,23 @@
+## IDF Component Manager Manifest File
+## Dependencies for Leveller Project
+
+dependencies:
+  # LVGL Port Helper - handles LVGL initialization, tasks, timers
+  espressif/esp_lvgl_port:
+    version: "^2.6.2"
+
+  # ILI9341 LCD Driver (SPI)
+  espressif/esp_lcd_ili9341:
+    version: "^2.0.0"
+
+  # XPT2046 Touch Controller Driver
+  atanisoft/esp_lcd_touch_xpt2046:
+    version: "^1.0.6"
+
+  # Explicitly use LVGL 9.x (not old drivers)
+  lvgl/lvgl:
+    version: "^9.2.0"
+    public: true
+
+  idf:
+    version: ">=5.0"

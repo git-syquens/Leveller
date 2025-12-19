@@ -19,7 +19,20 @@
       "Bash(idf.py fullclean:*)",
       "Bash(cmd /c \"rmdir /s /q build\")",
       "Bash(/e/Dev/Espressif/frameworks/esp-idf-v5.5/tools/tools/cmake/3.30.2/bin/cmake.exe:*)",
-      "Bash(idf.py build:*)"
+      "Bash(idf.py build:*)",
+      "Bash(idf.py reconfigure:*)",
+      "Bash(ls:*)",
+      "Bash(cat:*)",
+      "Bash(source:*)",
+      "Bash(idf.py:*)",
+      "Bash(/e/Dev/Espressif/python_env/idf5.5_py3.10_env/Scripts/python.exe /e/Dev/Espressif/frameworks/esp-idf-v5.5/tools/idf.py:*)",
+      "Bash(cmd.exe /c:*)",
+      "Bash(/e/Dev/Espressif/tools/cmake/3.30.2/bin/cmake.exe:*)",
+      "Bash(find:*)",
+      "Bash(tail:*)",
+      "Bash(cmd.exe /c \"idf.py build 2>&1\")",
+      "Bash(diff:*)",
+      "Bash(tree:*)"
     ]
   }
 }

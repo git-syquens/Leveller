@@ -2,9 +2,12 @@
 ## Project-Specific Pinout Configuration
 
 **Project**: Camper Levelling Indicator
-**Board**: ESP32-SCREEN (Marauder Board) with ESP32-WROOM-32
+**Board**: ESP32-SCREEN (Marauder Board - ALI Purple Screen Version) with ESP32-WROOM-32
 **Display**: 2.4" TFT LCD with Touch Controller (SPI Interface)
 **Last Updated**: 2025-12-19
+
+> **⚠️ IMPORTANT - BOARD VARIANT NOTICE:**
+> This pinout is for the **ALI Purple Screen Board** variant. Other documentation may show different pinouts (e.g., MOSI=IO12, DC=IO15, CLK=IO2) but those are INCORRECT for this specific hardware. The pinout below has been verified as working with the actual physical board.
 
 ---
 
@@ -16,8 +19,8 @@ The Leveller (Lindi) is a camper levelling indicator that displays the vehicle's
 
 | Component | Model/Type | Interface | Address/Details |
 |-----------|------------|-----------|-----------------|
-| TFT LCD Display | 2.4" TFT (ILI9341/ST7789) | SPI | CS=IO13, DC=IO15, RST=IO14, MOSI=IO12, SCK=IO2 |
-| Touch Controller | XPT2046 | SPI | CS=IO33, IRQ=IO39, MOSI=IO32, MISO=IO36, SCK=IO25 |
+| TFT LCD Display | 2.4" TFT ILI9341 | SPI | **VERIFIED:** CS=IO15, DC=IO2, MISO=IO12, MOSI=IO13, CLK=IO14, BCKL=IO21 |
+| Touch Controller | XPT2046 | SPI | CS=IO33, IRQ=IO39, MOSI=IO32, MISO=IO36, CLK=IO25 |
 | Gyro/Accelerometer | MPU6050 | I2C | 0x68 (default) or 0x69 (via P2 header) |
 | GPS Module | GY-GPS6MV2 | UART | TX=IO27, RX=IO35 |
 | RGB LED | WS2812B-like | GPIO | R=IO17, G=IO4, B=IO16 |
@@ -29,15 +32,16 @@ The Leveller (Lindi) is a camper levelling indicator that displays the vehicle's
 
 ### Already Used Pins (Built-in Hardware)
 
-#### TFT LCD Display (SPI)
+#### TFT LCD Display (SPI) - ALI Purple Screen Board
 | Function | ESP32 Pin | Description |
 |----------|-----------|-------------|
-| TFT_RST | IO14 | Display reset |
-| TFT_SCK | IO2 | SPI clock |
-| TFT_RS (DC) | IO15 | Data/Command select |
-| TFT_CS | IO13 | Chip select |
-| TFT_SDI (MOSI) | IO12 | SPI data out |
-| TFT_SDO (MISO) | - | Not used (display only) |
+| TFT_CS | IO15 | Chip select ✅ VERIFIED |
+| TFT_DC | IO2 | Data/Command select ✅ VERIFIED |
+| TFT_MISO | IO12 | SPI data in ✅ VERIFIED |
+| TFT_MOSI | IO13 | SPI data out ✅ VERIFIED |
+| TFT_CLK | IO14 | SPI clock ✅ VERIFIED |
+| TFT_RST | -1 | Reset (not used) ✅ VERIFIED |
+| TFT_BCKL | IO21 | Backlight control ✅ VERIFIED |
 
 #### Touch Controller (XPT2046 - Separate SPI)
 | Function | ESP32 Pin | Description |
@@ -179,15 +183,17 @@ The Leveller (Lindi) is a camper levelling indicator that displays the vehicle's
 | VDD | 3.3V | Power | 3.3V rail |
 | GND | GND | Ground | Common ground |
 
-**SPI Configuration:**
+**SPI Configuration (ALI Purple Screen Board - VERIFIED):**
 ```c
 #define TFT_SPI_HOST        SPI2_HOST
-#define TFT_MOSI_PIN        GPIO_NUM_12
-#define TFT_CLK_PIN         GPIO_NUM_2
-#define TFT_CS_PIN          GPIO_NUM_13
-#define TFT_DC_PIN          GPIO_NUM_15
-#define TFT_RST_PIN         GPIO_NUM_14
-#define TFT_SPI_FREQ_HZ     40000000  // 40MHz SPI clock
+#define TFT_MISO_PIN        GPIO_NUM_12  // ✅ VERIFIED
+#define TFT_MOSI_PIN        GPIO_NUM_13  // ✅ VERIFIED
+#define TFT_CLK_PIN         GPIO_NUM_14  // ✅ VERIFIED
+#define TFT_CS_PIN          GPIO_NUM_15  // ✅ VERIFIED
+#define TFT_DC_PIN          GPIO_NUM_2   // ✅ VERIFIED
+#define TFT_RST_PIN         -1           // ✅ VERIFIED (not used)
+#define TFT_BCKL_PIN        GPIO_NUM_21  // ✅ VERIFIED (backlight)
+#define TFT_SPI_FREQ_HZ     40000000     // 40MHz SPI clock
 ```
 
 **Display Driver Options:**
@@ -267,16 +273,16 @@ The Leveller (Lindi) is a camper levelling indicator that displays the vehicle's
 | ESP32 GPIO | Function | Component | Type | Notes |
 |------------|----------|-----------|------|-------|
 | GPIO1 | U0TXD | USB Serial | Output | Reserved |
-| GPIO2 | TFT_SCK | TFT Display | SPI CLK | Built-in |
+| GPIO2 | TFT_DC | TFT Display | SPI D/C | ✅ VERIFIED |
 | GPIO3 | U0RXD | USB Serial | Input | Reserved |
 | GPIO4 | LED_GREEN | RGB LED | Output | Built-in |
-| GPIO12 | TFT_MOSI | TFT Display | SPI MOSI | Built-in |
-| GPIO13 | TFT_CS | TFT Display | SPI CS | Built-in |
-| GPIO14 | TFT_RST | TFT Display | Output | Built-in |
-| GPIO15 | TFT_DC | TFT Display | Output | Built-in |
+| GPIO12 | TFT_MISO | TFT Display | SPI MISO | ✅ VERIFIED |
+| GPIO13 | TFT_MOSI | TFT Display | SPI MOSI | ✅ VERIFIED |
+| GPIO14 | TFT_CLK | TFT Display | SPI CLK | ✅ VERIFIED |
+| GPIO15 | TFT_CS | TFT Display | SPI CS | ✅ VERIFIED |
 | GPIO16 | LED_BLUE | RGB LED | Output | Built-in |
 | GPIO17 | LED_RED | RGB LED | Output | Built-in |
-| GPIO21 | I2C_SDA | MPU6050 | I2C Data | P2 Pin 1 |
+| GPIO21 | TFT_BCKL | TFT Backlight | Output | ✅ VERIFIED |
 | GPIO22 | I2C_SCL | MPU6050 | I2C Clock | P2 Pin 2 |
 | GPIO25 | TP_CLK | Touch | SPI CLK | Built-in |
 | GPIO26 | SPEAKER | Audio Amp | PWM Out | Built-in |

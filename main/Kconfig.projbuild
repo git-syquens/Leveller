@@ -1,0 +1,132 @@
+menu "Leveller Configuration"
+
+    menu "Display Configuration"
+        config LEVELLER_LCD_H_RES
+            int "LCD Horizontal Resolution"
+            default 320
+            help
+                Horizontal resolution of the LCD display.
+
+        config LEVELLER_LCD_V_RES
+            int "LCD Vertical Resolution"
+            default 240
+            help
+                Vertical resolution of the LCD display.
+
+        config LEVELLER_LCD_SPI_CLOCK_HZ
+            int "LCD SPI Clock Frequency (Hz)"
+            default 40000000
+            range 1000000 80000000
+            help
+                SPI clock frequency for LCD (default: 40MHz).
+                Reduce if seeing display artifacts.
+
+        config LEVELLER_LCD_BIT_PER_PIXEL
+            int "LCD Color Depth (bits per pixel)"
+            default 16
+            help
+                Color depth for LCD (16 = RGB565).
+    endmenu
+
+    menu "Touch Configuration"
+        config LEVELLER_TOUCH_SPI_CLOCK_HZ
+            int "Touch SPI Clock Frequency (Hz)"
+            default 2000000
+            range 100000 10000000
+            help
+                SPI clock frequency for XPT2046 touch controller.
+    endmenu
+
+    menu "Pin Configuration"
+        comment "TFT Display Pins"
+
+        config LEVELLER_LCD_PIN_MOSI
+            int "LCD MOSI Pin"
+            default 12
+            help
+                GPIO pin for LCD SPI MOSI (data out).
+
+        config LEVELLER_LCD_PIN_CLK
+            int "LCD Clock Pin"
+            default 2
+            help
+                GPIO pin for LCD SPI clock.
+
+        config LEVELLER_LCD_PIN_CS
+            int "LCD Chip Select Pin"
+            default 13
+            help
+                GPIO pin for LCD chip select.
+
+        config LEVELLER_LCD_PIN_DC
+            int "LCD Data/Command Pin"
+            default 15
+            help
+                GPIO pin for LCD data/command select.
+
+        config LEVELLER_LCD_PIN_RST
+            int "LCD Reset Pin"
+            default 14
+            help
+                GPIO pin for LCD reset (-1 if not connected).
+
+        config LEVELLER_LCD_PIN_BACKLIGHT
+            int "LCD Backlight Pin"
+            default -1
+            help
+                GPIO pin for LCD backlight control (-1 if not used).
+
+        comment "Touch Controller Pins"
+
+        config LEVELLER_TOUCH_PIN_MOSI
+            int "Touch MOSI Pin"
+            default 32
+            help
+                GPIO pin for touch SPI MOSI.
+
+        config LEVELLER_TOUCH_PIN_MISO
+            int "Touch MISO Pin"
+            default 36
+            help
+                GPIO pin for touch SPI MISO.
+
+        config LEVELLER_TOUCH_PIN_CLK
+            int "Touch Clock Pin"
+            default 25
+            help
+                GPIO pin for touch SPI clock.
+
+        config LEVELLER_TOUCH_PIN_CS
+            int "Touch Chip Select Pin"
+            default 33
+            help
+                GPIO pin for touch chip select.
+
+        config LEVELLER_TOUCH_PIN_IRQ
+            int "Touch Interrupt Pin"
+            default 39
+            help
+                GPIO pin for touch interrupt (PENIRQ).
+    endmenu
+
+    menu "I2C Configuration (MPU6050)"
+        config LEVELLER_I2C_SDA_PIN
+            int "I2C SDA Pin"
+            default 21
+            help
+                GPIO pin for I2C SDA (MPU6050).
+
+        config LEVELLER_I2C_SCL_PIN
+            int "I2C SCL Pin"
+            default 22
+            help
+                GPIO pin for I2C SCL (MPU6050).
+
+        config LEVELLER_I2C_FREQ_HZ
+            int "I2C Frequency (Hz)"
+            default 100000
+            help
+                I2C bus frequency (100kHz standard, 400kHz fast mode).
+    endmenu
+
+endmenu
