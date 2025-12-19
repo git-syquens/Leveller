@@ -1,0 +1,57 @@
+dependencies:
+  esp_idf_lib_helpers:
+    component_hash: 32ab64af43dc9b3b45871add88dc7b04f9ee17bb587d4d14d7e117bb02a84edf
+    dependencies: []
+    source:
+      git: https://github.com/UncleRus/esp-idf-lib.git
+      path: components/esp_idf_lib_helpers
+      type: git
+    version: e82d88daaf8ac764718f30d21811213b431c392d
+  espressif/led_strip:
+    component_hash: 28c6509a727ef74925b372ed404772aeedf11cce10b78c3f69b3c66799095e2d
+    dependencies:
+    - name: idf
+      require: private
+      version: '>=4.4'
+    source:
+      registry_url: https://components.espressif.com/
+      type: service
+    version: 2.5.5
+  hd44780:
+    component_hash: 61cdb3acee780e8acb1efc484709ee053a24e53d37187d73479652e0c735e1ae
+    dependencies: []
+    source:
+      git: https://github.com/UncleRus/esp-idf-lib.git
+      path: components/hd44780
+      type: git
+    version: e82d88daaf8ac764718f30d21811213b431c392d
+  i2cdev:
+    component_hash: 5edced0a37b5ff0e79763ca3ed2c617fbd46c2285dbb1f38118a54f044d4097f
+    dependencies: []
+    source:
+      git: https://github.com/UncleRus/esp-idf-lib.git
+      path: components/i2cdev
+      type: git
+    version: e82d88daaf8ac764718f30d21811213b431c392d
+  idf:
+    source:
+      type: idf
+    version: 5.5.0
+  mpu6050:
+    component_hash: f9cf469f9132c3f2d904f29a1e98a2e32e20419e55e3a3bb50c12b1b6f1fc8b5
+    dependencies: []
+    source:
+      git: https://github.com/UncleRus/esp-idf-lib.git
+      path: components/mpu6050
+      type: git
+    version: e82d88daaf8ac764718f30d21811213b431c392d
+direct_dependencies:
+- esp_idf_lib_helpers
+- espressif/led_strip
+- hd44780
+- i2cdev
+- idf
+- mpu6050
+manifest_hash: 6fcfb122da51450fae6c4b7081b2570636330361924738ecb2d3b0ae5e1dbb28
+target: esp32c6
+version: 2.0.0
